@@ -1,0 +1,33 @@
+# Environment variables (NEVER commit!)
+.env
+.env.local
+.env.*.local
+
+# Dependencies
+node_modules/
+bun.lockb
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Build output
+dist/
+build/
+*.js.map
+
+# Private keys and credentials
+*.pem
+*.key
+credentials.json
