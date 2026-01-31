@@ -106,16 +106,17 @@ bun run scripts/cancel-orders.ts --all
 
 | Order Type | --size Means | Example | Minimum |
 |------------|--------------|---------|---------|
-| **MARKET** (`--type market`) | Dollar amount | `--size 100` = spend/receive $100 | $1.00 |
-| **LIMIT** (`--type limit`) | Share count | `--size 100` = buy/sell 100 shares | 5 shares + $0.10 total value |
+| **MARKET** (`--type market`) | Dollar amount | `--size 100` = spend/receive $100 | MORE than $1.00 |
+| **LIMIT** (`--type limit`) | Share count | `--size 100` = buy/sell 100 shares | 5 shares + total value > $1.00 |
 
 **Always specify:**
 - For exact share count → Use `--type limit`
 - For exact dollar amount → Use `--type market`
 
 **Polymarket Minimums:**
-- Market orders: Minimum $1.00
-- Limit orders: Minimum 5 shares AND order value ≥ $0.10
+- Market orders: MORE than $1.00 (e.g., $1.01 or higher)
+- Limit orders: Minimum 5 shares AND (shares × price) > $1.00
+- Price can be any amount (0.01, 0.50, etc.) - validation is on shares and total value only
 
 ## Available Scripts
 

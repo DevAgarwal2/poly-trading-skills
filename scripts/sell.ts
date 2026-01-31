@@ -66,10 +66,11 @@ async function main() {
   
   // Validate minimum order sizes
   if (orderType === "market") {
-    // Market orders: minimum $1.00
-    if (size < 1.0) {
-      console.error("❌ Minimum order size for MARKET orders: $1.00");
+    // Market orders: minimum MORE than $1.00
+    if (size <= 1.0) {
+      console.error("❌ Minimum order size for MARKET orders: MORE than $1.00");
       console.error(`   Your size: $${size.toFixed(2)}`);
+      console.error(`   Please use at least $1.01`);
       process.exit(1);
     }
   } else {
@@ -80,11 +81,12 @@ async function main() {
       console.error(`   Please increase to at least 5 shares`);
       process.exit(1);
     }
+    // Check total value is MORE than $1.00
     const totalValue = size * price;
-    if (totalValue < 0.10) {
-      console.error("❌ Minimum order value: $0.10");
+    if (totalValue <= 1.0) {
+      console.error("❌ Minimum order value: MORE than $1.00");
       console.error(`   Your order value: $${totalValue.toFixed(2)} (${size} shares × $${price.toFixed(2)})`);
-      console.error(`   Increase size or price to meet minimum`);
+      console.error(`   Increase shares to make total > $1.00`);
       process.exit(1);
     }
   }

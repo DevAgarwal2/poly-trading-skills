@@ -647,8 +647,9 @@ I'll [buy/sell] [X shares / $X worth] at [price]. Proceed?
 ```
 
 **Minimum Order Sizes:**
-- **Market orders:** Minimum $1.00
-- **Limit orders:** Minimum 5 shares AND minimum $0.10 total value
+- **Market orders:** MORE than $1.00 (e.g., $1.01+)
+- **Limit orders:** Minimum 5 shares AND total value MORE than $1.00
+- Price can be anything (0.01, 0.50, etc.) - only shares and total value matter
 - If user wants less than minimum, reject and explain limits
 
 ---
