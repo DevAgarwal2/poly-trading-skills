@@ -13,8 +13,15 @@ const ABI = [
 ];
 
 async function main() {
+  const WALLET_ADDRESS = process.env.WALLET_ADDRESS;
+  
+  if (!WALLET_ADDRESS) {
+    console.error("❌ WALLET_ADDRESS is required in .env file");
+    process.exit(1);
+  }
+  
   const provider = new ethers.providers.JsonRpcProvider("https://polygon-rpc.com");
-  const walletAddress = "0x668706Ad919987Da5d273f6928F51d64235e09df";
+  const walletAddress = WALLET_ADDRESS;
   
   const contract = new ethers.Contract(USDC_E_CONTRACT, ABI, provider);
   
