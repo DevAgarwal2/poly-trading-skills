@@ -73,10 +73,11 @@ async function main() {
       process.exit(1);
     }
   } else {
-    // Limit orders: minimum 1 share (but check total value too)
-    if (size < 1) {
-      console.error("❌ Minimum order size for LIMIT orders: 1 share");
+    // Limit orders: minimum 5 shares
+    if (size < 5) {
+      console.error("❌ Minimum order size for LIMIT orders: 5 shares");
       console.error(`   Your size: ${size} shares`);
+      console.error(`   Please increase to at least 5 shares`);
       process.exit(1);
     }
     const totalValue = size * price;
