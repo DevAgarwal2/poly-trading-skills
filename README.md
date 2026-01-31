@@ -104,14 +104,18 @@ bun run scripts/cancel-orders.ts --all
 
 **The `--size` parameter means DIFFERENT things:**
 
-| Order Type | --size Means | Example |
-|------------|--------------|---------|
-| **MARKET** (`--type market`) | Dollar amount | `--size 100` = spend/receive $100 |
-| **LIMIT** (`--type limit`) | Share count | `--size 100` = buy/sell 100 shares |
+| Order Type | --size Means | Example | Minimum |
+|------------|--------------|---------|---------|
+| **MARKET** (`--type market`) | Dollar amount | `--size 100` = spend/receive $100 | $1.00 |
+| **LIMIT** (`--type limit`) | Share count | `--size 100` = buy/sell 100 shares | 1 share + $0.10 total value |
 
 **Always specify:**
 - For exact share count → Use `--type limit`
 - For exact dollar amount → Use `--type market`
+
+**Polymarket Minimums:**
+- Market orders: Minimum $1.00
+- Limit orders: Minimum 1 share AND order value ≥ $0.10
 
 ## Available Scripts
 

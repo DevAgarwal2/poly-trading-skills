@@ -64,6 +64,30 @@ async function main() {
   const size = parseFloat(args.size);
   const orderType = args.type || "limit"; // default to limit
   
+  // Validate minimum order sizes
+  if (orderType === "market") {
+    // Market orders: minimum $1.00
+    if (size < 1.0) {
+      console.error("❌ Minimum order size for MARKET orders: $1.00");
+      console.error(`   Your size: $${size.toFixed(2)}`);
+      process.exit(1);
+    }
+  } else {
+    // Limit orders: minimum 1 share (but check total value too)
+    if (size < 1) {
+      console.error("❌ Minimum order size for LIMIT orders: 1 share");
+      console.error(`   Your size: ${size} shares`);
+      process.exit(1);
+    }
+    const totalValue = size * price;
+    if (totalValue < 0.10) {
+      console.error("❌ Minimum order value: $0.10");
+      console.error(`   Your order value: $${totalValue.toFixed(2)} (${size} shares × $${price.toFixed(2)})`);
+      console.error(`   Increase size or price to meet minimum`);
+      process.exit(1);
+    }
+  }
+  
   // Load environment variables
   const PRIVATE_KEY = process.env.PRIVATE_KEY;
   const POLYGON_RPC = process.env.POLYGON_RPC || "https://polygon-rpc.com";

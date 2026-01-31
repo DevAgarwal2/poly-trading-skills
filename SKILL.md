@@ -646,6 +646,11 @@ All trading scripts are located in `scripts/` directory.
 I'll [buy/sell] [X shares / $X worth] at [price]. Proceed?
 ```
 
+**Minimum Order Sizes:**
+- **Market orders:** Minimum $1.00
+- **Limit orders:** Minimum 1 share AND minimum $0.10 total value
+- If user wants less than minimum, reject and explain limits
+
 ---
 
 ### Quick Command Reference
